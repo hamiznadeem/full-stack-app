@@ -4,10 +4,10 @@ const contactController = require('../controllers/contactController');
 
 Router.get('/', contactController.getContact);
 
-Router.get('/', contactController.postContact);
+Router.post('/', contactController.postContact);
 
-Router.get('/:id', contactController.putContact);
+Router.put('/:id', contactController.putContact);
 
-Router.get('/:id', contactController.deleteContact);
+Router.delete('/:id', contactController.deleteContact);
 
 module.exports = Router;

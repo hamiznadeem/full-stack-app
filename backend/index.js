@@ -21,5 +21,5 @@ mongoose.connect(process.env.MONGO_URI,{})
 .then(()=>console.log("Mongo DB Connected"))
 .catch((err)=> console.log("Mongo Db Error: ", err));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>console.log(`Server Running on Port: ${PORT}`))
