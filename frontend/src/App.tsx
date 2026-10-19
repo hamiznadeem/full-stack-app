@@ -22,24 +22,19 @@ function App() {
   }
 
 
-
-  // const handleAddContact = (contact: Contact) => {
-  //   setContacts([
-  //     ... contacts,
-  //     contact
-  //   ]);
-  // }
-
-  const handleAddOrUpdate = async (contact: Contact) => {
-    if (contact._id) {
-      await updateContact (contact._id, contact)
+  const handleAddOrUpdate = async (contact: FormData, id?: string) => {
+  try {
+    if (id) {
+      await updateContact(id, contact); 
+    } else {
+      await createContact(contact);
+    }
+    fetchContact();
+    setContactToEdit(null);
+  } catch (error) {
+    console.error("Save Error:", error);
   }
-  else{
-    await createContact(contact);
-  }
-  fetchContact();
-  setContactToEdit(null);
-}
+};
 
   const handleEditContact = (contact: Contact) => {
     setContactToEdit(contact);
@@ -64,8 +59,6 @@ function App() {
     <ContactList contacts={contacts} onDelete={handleDeleteContact} onEdit={handleEditContact} />
 
     </Container>
-
- 
     </>
   )
 }

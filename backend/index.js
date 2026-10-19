@@ -1,14 +1,20 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors');   
 
 require('dotenv').config();
 
 const app = express();
 
 
-//middleware
+//Make upload folder public
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+
+
+
+//middleware
 app.use(cors());
 app.use(express.json());
 
